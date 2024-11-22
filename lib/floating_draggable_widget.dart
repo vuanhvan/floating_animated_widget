@@ -416,7 +416,8 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
     /// appbar), if so, then top will be the lowest of highest point of the screen.
     /// top variable will be no more than the screen total height
     double currentTop;
-    if (dy >= (totalHeight - widget.floatingWidgetHeight)) {
+    // 60 is the height of the appbar
+    if (dy >= (totalHeight - widget.floatingWidgetHeight) - 60) {
       currentTop = (totalHeight - widget.floatingWidgetHeight);
     } else {
       if (dy <= 0) {
