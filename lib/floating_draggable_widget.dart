@@ -418,7 +418,7 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
     double currentTop;
     // 60 is the height of the appbar
     if (dy >= (totalHeight - widget.floatingWidgetHeight) - 60) {
-      currentTop = (totalHeight - widget.floatingWidgetHeight);
+      currentTop = (totalHeight - widget.floatingWidgetHeight) - 60;
     } else {
       if (dy <= 0) {
         currentTop = widget.floatingWidgetHeight;
