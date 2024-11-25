@@ -121,7 +121,7 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
     with SingleTickerProviderStateMixin {
   /// distance from top and left initial value
   late double top, left;
-  double? right = 20;
+  double? right = 0;
   double? bottom = 0;
 
   /// is the widget tabbed bool value
@@ -258,7 +258,7 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
                       top: top == -1 ? null : top,
                       left: left == -1 ? null : left,
                       right: widget.dx == null && left == -1 && top == -1
-                          ? 20
+                          ? 0
                           : null,
                       bottom: widget.bottom ??
                           (widget.dy == null && left == -1 && top == -1
