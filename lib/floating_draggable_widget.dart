@@ -176,6 +176,8 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
     final containerKey1 = GlobalKey();
     final containerKey2 = GlobalKey();
 
+    final viewPaddingBottom = MediaQuery.of(context).viewPadding.bottom ?? 0;
+
     /// distance from top and left from user
     /// top = widget.dy?? MediaQuery.of(context).size.height / 2;
     /// left = widget.dx?? MediaQuery.of(context).size.width / 2;
@@ -269,7 +271,7 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
                       /// setting animation time and animation type
                       /// the widget will bounce when it will touch the main screen border.
                       /// other wise it has just a simple ease animation.
-                      curve: top >= (height - widget.floatingWidgetHeight) ||
+                      curve: top >= (height - widget.floatingWidgetHeight - viewPaddingBottom) ||
                               left >= (width - widget.floatingWidgetWidth) ||
                               top <= widget.floatingWidgetHeight ||
                               left <= 1
