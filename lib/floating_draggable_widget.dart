@@ -272,7 +272,7 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
                       /// setting animation time and animation type
                       /// the widget will bounce when it will touch the main screen border.
                       /// other wise it has just a simple ease animation.
-                      curve: top >= (height - widget.floatingWidgetHeight - paddingBottom) ||
+                      curve: top >= (height - widget.floatingWidgetHeight - widget.paddingBottom) ||
                               left >= (width - widget.floatingWidgetWidth) ||
                               top <= widget.floatingWidgetHeight ||
                               left <= 1
@@ -421,8 +421,8 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
     double currentTop;
     // 60 is the height of the appbar
     
-    if (dy >= (totalHeight - widget.floatingWidgetHeight) - 60 - paddingBottom) {
-      currentTop = (totalHeight - widget.floatingWidgetHeight) - 60 - paddingBottom;
+    if (dy >= (totalHeight - widget.floatingWidgetHeight) - 60 - widget.paddingBottom) {
+      currentTop = (totalHeight - widget.floatingWidgetHeight) - 60 - widget.paddingBottom;
     } else {
       if (dy <= 0) {
         currentTop = widget.floatingWidgetHeight;
