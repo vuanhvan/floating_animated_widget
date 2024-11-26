@@ -418,7 +418,7 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
     double currentTop;
     // 60 is the height of the appbar
 
-    final viewPadding = MediaQuery.of(context).viewPadding ?? 0;
+    final viewPadding = MediaQuery.of(context).viewPadding.bottom ?? 0;
     
     if (dy >= (totalHeight - widget.floatingWidgetHeight) - 60 - viewPadding) {
       currentTop = (totalHeight - widget.floatingWidgetHeight) - 60 - viewPadding;
