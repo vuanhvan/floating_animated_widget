@@ -40,6 +40,7 @@ class FloatingDraggableWidget extends StatefulWidget {
     this.resizeToAvoidBottomInset = true,
     this.onDragging,
     this.widgetWhenDragging,
+    required this.paddingBottom
   }) : super(key: key);
 
   /// mainScreenWidget is required and it accept any widget.
@@ -96,6 +97,7 @@ class FloatingDraggableWidget extends StatefulWidget {
   /// if [autoAlign] is true then this autoAlignType will determine on which side the floating widget land after releasing it.
   /// by default it is [AlignmentType.both].
   final AlignmentType autoAlignType;
+  final double paddingBottom;
 
   /// if [autoAlign] is true, then setting true to [disableBounceAnimation] can disable the bounce animation.
   final bool disableBounceAnimation;
@@ -169,12 +171,10 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
 
   @override
   Widget build(BuildContext context) {
-
-    final viewPaddingBottom = MediaQuery.of(context).viewPadding.bottom ?? 0;
     
     /// total screen width & height
     width = widget.screenWidth ?? MediaQuery.of(context).size.width;
-    height = widget.screenHeight ?? MediaQuery.of(context).size.height - viewPaddingBottom;
+    height = widget.screenHeight ?? MediaQuery.of(context).size.height;
     final hasDeleteWidget = widget.deleteWidget != null;
     final containerKey1 = GlobalKey();
     final containerKey2 = GlobalKey();
@@ -272,7 +272,7 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
                       /// setting animation time and animation type
                       /// the widget will bounce when it will touch the main screen border.
                       /// other wise it has just a simple ease animation.
-                      curve: top >= (height - widget.floatingWidgetHeight - viewPaddingBottom) ||
+                      curve: top >= (height - widget.floatingWidgetHeight - paddingBottom) ||
                               left >= (width - widget.floatingWidgetWidth) ||
                               top <= widget.floatingWidgetHeight ||
                               left <= 1
@@ -420,11 +420,9 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
     /// top variable will be no more than the screen total height
     double currentTop;
     // 60 is the height of the appbar
-
-    final viewPadding = MediaQuery.of(context).viewPadding.bottom ?? 0;
     
-    if (dy >= (totalHeight - widget.floatingWidgetHeight) - 60 - viewPadding) {
-      currentTop = (totalHeight - widget.floatingWidgetHeight) - 60 - viewPadding;
+    if (dy >= (totalHeight - widget.floatingWidgetHeight) - 60 - paddingBottom) {
+      currentTop = (totalHeight - widget.floatingWidgetHeight) - 60 - paddingBottom;
     } else {
       if (dy <= 0) {
         currentTop = widget.floatingWidgetHeight;
