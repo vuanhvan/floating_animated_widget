@@ -169,15 +169,16 @@ class _FloatingDraggableWidgetState extends State<FloatingDraggableWidget>
 
   @override
   Widget build(BuildContext context) {
+
+    final viewPaddingBottom = MediaQuery.of(context).viewPadding.bottom ?? 0;
+    
     /// total screen width & height
     width = widget.screenWidth ?? MediaQuery.of(context).size.width;
-    height = widget.screenHeight ?? MediaQuery.of(context).size.height;
+    height = widget.screenHeight ?? MediaQuery.of(context).size.height - viewPaddingBottom;
     final hasDeleteWidget = widget.deleteWidget != null;
     final containerKey1 = GlobalKey();
     final containerKey2 = GlobalKey();
-
-    final viewPaddingBottom = MediaQuery.of(context).viewPadding.bottom ?? 0;
-
+    
     /// distance from top and left from user
     /// top = widget.dy?? MediaQuery.of(context).size.height / 2;
     /// left = widget.dx?? MediaQuery.of(context).size.width / 2;
