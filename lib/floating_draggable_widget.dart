@@ -10,6 +10,7 @@ enum AlignmentType {onlyRight, onlyLeft, both}
 class FloatingDraggableWidget extends StatefulWidget {
   FloatingDraggableWidget({
     Key? key,
+    required this.paddingBottom,
     required this.mainScreenWidget,
     required this.floatingWidget,
     required this.floatingWidgetWidth,
@@ -39,8 +40,7 @@ class FloatingDraggableWidget extends StatefulWidget {
     this.deleteWidgetPadding = const EdgeInsets.only(bottom: 8),
     this.resizeToAvoidBottomInset = true,
     this.onDragging,
-    this.widgetWhenDragging,
-    required this.paddingBottom
+    this.widgetWhenDragging
   }) : super(key: key);
 
   /// mainScreenWidget is required and it accept any widget.
